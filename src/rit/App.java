@@ -13,8 +13,9 @@ public class App {
         RegisterVisitor register = new RegisterVisitor();
         for (GlobalMarketItem gmi : cart) {
             gmi.accept(register);
+            System.out.println("Subtotal: $" + register.getTotal());
         }
 
-        System.out.println("Total Price: $" + register.getTotal());
+        System.out.println("\nTotal Price: $" + register.getTotal());
     }
 }

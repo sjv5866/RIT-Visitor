@@ -18,7 +18,7 @@ public class RegisterVisitor implements RITVisitor{
         String ans = myScan.nextLine();
         double weight = Double.parseDouble(ans);
         double subtotal = gmi.getPrice(weight);
-        System.out.println("Meat price: $" + gmi.getPrice(weight));
+        System.out.printf("Meat price: $%,.2f\n", gmi.getPrice(weight));
         total += subtotal;
     }
 
@@ -31,7 +31,7 @@ public class RegisterVisitor implements RITVisitor{
         System.out.print("How many of that item do you want to purchase (quantity)? ");
         int quant = myScan.nextInt();
         double subtotal = gmi.getPrice(quant);
-        System.out.println("Item price: $" + subtotal);
+        System.out.printf("Item price: $%,.2f\n", subtotal);
         total += subtotal;
     }
 
@@ -41,15 +41,16 @@ public class RegisterVisitor implements RITVisitor{
      */
     @Override
     public void visit(AlcoholGMI gmi) {
-        System.out.print("Are you over 18 (y/n)?");
-        String ans = myScan.nextLine();
+        System.out.print("Are you over 18 (y/n)? ");
+        myScan.nextLine();
+        String response = myScan.nextLine();
         double subtotal = 0;
-        if (ans.toUpperCase().equals("Y")) {
-            System.out.print("How much alcohol do you want to purchase (per litre)?");
-            ans = myScan.nextLine();
+        if (response.equals("Y")) {
+            System.out.print("How much alcohol do you want to purchase (per litre)? ");
+            String ans = myScan.nextLine();
             double litres = Double.parseDouble(ans);
             subtotal = gmi.getPrice(litres);
-            System.out.println("Alc price: $" + subtotal);
+            System.out.printf("Alc price: $%,.2f\n", subtotal);
         } else {
             System.out.println("Cannot make a purchase: buyer too young. Authorities will have to be called :^).");
         }
@@ -65,7 +66,7 @@ public class RegisterVisitor implements RITVisitor{
         System.out.print("How many months are you planning on sticking with this subscription? ");
         int months = myScan.nextInt();
         double subtotal = gmi.getPrice(months);
-        System.out.println("Subscription price: $" + subtotal);
+        System.out.printf("Subscription price: $%,.2f\n", subtotal);
         total += subtotal;
     }
 
