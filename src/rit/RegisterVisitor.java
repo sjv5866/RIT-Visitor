@@ -14,7 +14,7 @@ public class RegisterVisitor implements RITVisitor{
      */
     @Override
     public void visit(MeatGMI gmi) {
-        System.out.print("How much meat do you want to purchase (in pounds)? ");
+        System.out.print("How much meat do they want to purchase (in pounds)? ");
         String ans = myScan.nextLine();
         double weight = Double.parseDouble(ans);
         double subtotal = gmi.getPrice(weight);
@@ -28,7 +28,7 @@ public class RegisterVisitor implements RITVisitor{
      */
     @Override
     public void visit(ItemGMI gmi) {
-        System.out.print("How many of that item do you want to purchase (quantity)? ");
+        System.out.print("How many of that item do they want to purchase (quantity)? ");
         int quant = myScan.nextInt();
         double subtotal = gmi.getPrice(quant);
         System.out.printf("Item price: $%,.2f\n", subtotal);
@@ -41,12 +41,12 @@ public class RegisterVisitor implements RITVisitor{
      */
     @Override
     public void visit(AlcoholGMI gmi) {
-        System.out.print("Are you over 18 (y/n)? ");
+        System.out.print("Are they over 18 (y/n)? ");
         myScan.nextLine();
         String response = myScan.nextLine();
         double subtotal = 0;
         if (response.equals("Y")) {
-            System.out.print("How much alcohol do you want to purchase (per litre)? ");
+            System.out.print("How much alcohol do they want to purchase (per litre)? ");
             String ans = myScan.nextLine();
             double litres = Double.parseDouble(ans);
             subtotal = gmi.getPrice(litres);
@@ -63,7 +63,7 @@ public class RegisterVisitor implements RITVisitor{
      */
     @Override
     public void visit(SubscriptionGMI gmi) {
-        System.out.print("How many months are you planning on sticking with this subscription? ");
+        System.out.print("How many months are they planning on sticking with this subscription? ");
         int months = myScan.nextInt();
         double subtotal = gmi.getPrice(months);
         System.out.printf("Subscription price: $%,.2f\n", subtotal);
