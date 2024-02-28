@@ -13,6 +13,11 @@ public class MeatGMI implements GlobalMarketItem {
         visitor.visit(this);
     }
 
+    /**
+     * Calculate price based on weight specified
+     * @param weight the weight specified
+     * @return total price of meat with weight factored in
+     */
     public double getPrice(double weight) {
         return weight * pricePerPound;
     }
